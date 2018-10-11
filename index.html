@@ -1,0 +1,255 @@
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>LoanCo Sample App</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+    crossorigin="anonymous">
+
+  <link href="stylesheets/modern-business.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  <!-- FontAwesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
+    crossorigin="anonymous">
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+  <!-- Google Analytics -->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', '', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <!-- End Google Analytics -->
+
+  <script type="text/javascript">
+    function setRecipient() {
+      var obj = document.getElementById("Signer1_UserName");
+      obj.value = document.getElementById("inputLastName").value + " " + document.getElementById("inputFirstName").value;
+      var obj = document.getElementById("Signer1_Email");
+      obj.value = document.getElementById("inputEmail").value;
+    };
+  </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://sample-app-loanco-jp.herokuapp.com/">
+          LoanCo
+          <div>
+            DocuSignサンプルアプリケーション
+          </div>
+        </a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="https://sample-app-loanco-jp.herokuapp.com/envelopes">ステータス</a></li>
+          <li><a href="https://sample-app-loanco-jp.herokuapp.com/about-us">About</a></li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+
+    <div id="error-why"></div>
+
+    <div class="row">
+
+      <div class="col-sm-10 col-sm-offset-1">
+
+        <h2 class="text-center">
+          個人ローン申し込み
+        </h2>
+
+        <hr />
+
+        <form id="mainForm1" data-toggle="validator" method="POST" action="https://demo.docusign.net/Member/PowerFormSigning.aspx?PowerFormId=0dcbd076-31f5-4d89-9287-c59b1c58cc3a&v=2"
+          onSubmit="return setRecipient();">
+          <input type=hidden id="Signer1_UserName" name="Signer1_UserName" value="">
+          <input type=hidden id="Signer1_Email" name="Signer1_Email" value="">
+
+          <div class="form-group">
+            <label for="inputLastName">姓</label>
+            <input type="text" class="form-control" id="inputLastName" name="inputLastName" placeholder="" required
+              value="サンプル">
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group">
+            <label for="inputFirstName">名</label>
+            <input type="text" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="" required
+              value="太郎">
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputEmail">メールアドレス</label>
+            <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="" required value="dsj_powerformsample@mailinator.com">
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inputAddress1Name">郵便番号</label>
+                <input type="text" class="form-control" id="inputZip" name="inputZip" placeholder="" required value="105-6035"
+                  maxlength="8">
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+
+              <div class="form-group">
+                <label for="inputState">都道府県</label>
+                <select class="form-control" id="inputState" name="inputState" required>
+                  <option value="北海道">北海道</option>
+                  <option value="青森県">青森県</option>
+                  <option value="岩手県">岩手県</option>
+                  <option value="宮城県">宮城県</option>
+                  <option value="秋田県">秋田県</option>
+                  <option value="山形県">山形県</option>
+                  <option value="福島県">福島県</option>
+                  <option value="茨城県">茨城県</option>
+                  <option value="栃木県">栃木県</option>
+                  <option value="群馬県">群馬県</option>
+                  <option value="埼玉県">埼玉県</option>
+                  <option value="千葉県">千葉県</option>
+                  <option value="東京都" selected="">東京都</option>
+                  <option value="神奈川県">神奈川県</option>
+                  <option value="新潟県">新潟県</option>
+                  <option value="富山県">富山県</option>
+                  <option value="石川県">石川県</option>
+                  <option value="福井県">福井県</option>
+                  <option value="山梨県">山梨県</option>
+                  <option value="長野県">長野県</option>
+                  <option value="岐阜県">岐阜県</option>
+                  <option value="静岡県">静岡県</option>
+                  <option value="愛知県">愛知県</option>
+                  <option value="三重県">三重県</option>
+                  <option value="滋賀県">滋賀県</option>
+                  <option value="京都府">京都府</option>
+                  <option value="大阪府">大阪府</option>
+                  <option value="兵庫県">兵庫県</option>
+                  <option value="奈良県">奈良県</option>
+                  <option value="和歌山県">和歌山県</option>
+                  <option value="鳥取県">鳥取県</option>
+                  <option value="島根県">島根県</option>
+                  <option value="岡山県">岡山県</option>
+                  <option value="広島県">広島県</option>
+                  <option value="山口県">山口県</option>
+                  <option value="徳島県">徳島県</option>
+                  <option value="香川県">香川県</option>
+                  <option value="愛媛県">愛媛県</option>
+                  <option value="高知県">高知県</option>
+                  <option value="福岡県">福岡県</option>
+                  <option value="佐賀県">佐賀県</option>
+                  <option value="長崎県">長崎県</option>
+                  <option value="熊本県">熊本県</option>
+                  <option value="大分県">大分県</option>
+                  <option value="宮崎県">宮崎県</option>
+                  <option value="鹿児島県">鹿児島県</option>
+                  <option value="沖縄県">沖縄県</option>
+                </select>
+                <div class="help-block with-errors"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress1Name">市区町村</label>
+            <input type="text" class="form-control" id="inputCity" name="inputCity" placeholder="" data-error="市区町村を入力して下さい"
+              required value="港区">
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="inputAddress1Name">住所1</label>
+            <input type="text" class="form-control" id="inputAddress1" name="inputAddress1" placeholder="" required
+              value="虎ノ門4-3-1">
+            <div class="help-block with-errors"></div>
+          </div>
+          <div class="form-group">
+            <label for="inputAddress1Name">住所2</label>
+            <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="" value="城山トラストタワー 35F">
+          </div>
+
+          <div class="form-group">
+            <label for="inputPhone">電話番号</label>
+            <input type="tel" class="form-control" id="inputPhone" name="inputPhone" placeholder="" value="03-1234-5678">
+            <div class="help-block with-errors"></div>
+          </div>
+
+          <hr />
+
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <button type="submit" class="btn btn-primary has-spinner">
+                個人ローンの申し込み
+                <span class="spinner"><i class="fa fa-spinner fa-spin icon-spin"></i></span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div>
+        <h2 class="text-center" style="opacity:0;">
+          個人ローン申し込み
+        </h2>
+      </div>
+    </div>
+    <footer>
+      <p>© 2018 DocuSign Inc.</p>
+    </footer>
+  </div>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="/bower_components/bootstrap-validator/dist/validator.js"></script>
+  <script type="text/javascript" src="/javascripts/app.js"></script>
+
+</body>
+
+</html>
