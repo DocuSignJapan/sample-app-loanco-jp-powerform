@@ -10,10 +10,10 @@ https://docusignjapan-samplewebformdemo01.netlify.com/
 1. [Free Developer Sandbox](https://go.docusign.com/o/sandbox/)を作成
 
 2. GitHubレポジトリからクローン
-
+```
     git clone <repo url> 
     cd <repo directory>
-
+```
 3. DocuSignサンドボックス環境にログインし、テンプレートをインポート
     ログイン後、テンプレートタブをクリックし、新規ボタンを押し、「テンプレートのアップロード」を選択します。
     /templateフォルダにある、個人ローン(PowerForm).jsonをアップロードしてください。
